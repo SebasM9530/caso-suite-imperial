@@ -905,3 +905,30 @@
     .escudo { width: 48px; height: 48px; }
     .clasificado-badge { display: none; }
   }
+
+/* PIE DE EXPEDIENTE */
+.pie-expediente {
+  max-width: 960px;
+  margin: 30px auto 10px;
+  padding: 18px 20px;
+  text-align: center;
+  border-top: 2px dashed var(--tinta-vieja);
+  font-family: 'Courier Prime', monospace;
+  color: var(--tinta-vieja);
+}
+.pie-expediente .pie-titulo {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.95rem;
+  color: var(--tinta);
+  letter-spacing: 1px;
+}
+.pie-expediente .pie-titulo span {
+  color: var(--rojo-sello);
+}
+.pie-expediente .pie-sub {
+  margin-top: 6px;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
