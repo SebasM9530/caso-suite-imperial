@@ -1,0 +1,907 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+  :root {
+    --papel: #f0e8d5;
+    --papel-oscuro: #d9cdb0;
+    --tinta: #1a1209;
+    --tinta-vieja: #3d2b10;
+    --rojo-sello: #8b1a1a;
+    --azul-policia: #1c2e4a;
+    --verde-forense: #1a3a2a;
+    --amarillo-nota: #f5e97a;
+    --gris-foto: #c8bfb0;
+    --acento: #c0392b;
+    --dorado: #b8860b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a1209;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px),
+      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px);
+    font-family: 'Courier Prime', monospace;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .carpeta {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #1e3a5f;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .carpeta-header {
+    background: linear-gradient(180deg, #1c2e4a 0%, #152336 100%);
+    padding: 28px 40px;
+    border-bottom: 3px solid var(--dorado);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .escudo {
+    width: 66px;
+    height: 66px;
+    flex-shrink: 0;
+  }
+
+  .header-texto h1 {
+    font-family: 'Special Elite', cursive;
+    color: #f0e8d5;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 4px;
+  }
+
+  .header-texto h2 {
+    font-family: 'Special Elite', cursive;
+    color: #f0e8d5;
+    font-size: 26px;
+    letter-spacing: 2px;
+  }
+
+  .header-texto .subtitulo {
+    color: var(--dorado);
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .clasificado-badge {
+    margin-left: auto;
+    text-align: center;
+    border: 2px solid var(--dorado);
+    padding: 8px 16px;
+    border-radius: 2px;
+  }
+
+  .clasificado-badge span {
+    display: block;
+    color: var(--dorado);
+    font-family: 'Special Elite', cursive;
+    font-size: 17px;
+    letter-spacing: 3px;
+  }
+
+  .clasificado-badge small {
+    color: #f0e8d5;
+    font-size: 9px;
+    letter-spacing: 2px;
+    opacity: 0.6;
+  }
+
+  /* TABS */
+  .tabs {
+    background: #152336;
+    display: flex;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    color: rgba(240,232,213,0.5);
+    font-family: 'Special Elite', cursive;
+    font-size: 10.5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 12px 13px;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .tab-btn:hover { color: rgba(240,232,213,0.85); }
+
+  .tab-btn.activo {
+    color: #f0e8d5;
+    border-bottom-color: var(--dorado);
+    background: rgba(184,134,11,0.1);
+  }
+
+  /* CONTENIDO */
+  .contenido-principal {
+    background: var(--papel);
+    background-image:
+      linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px),
+      linear-gradient(rgba(0,0,0,0.012) 1px, transparent 1px);
+    background-size: 30px 30px;
+    min-height: 600px;
+    position: relative;
+  }
+
+  .seccion { display: none; }
+  .seccion.visible { display: block; }
+
+  /* INFORME */
+  .informe-wrap { padding: 40px 50px; }
+
+  .sello-confidencial {
+    position: absolute;
+    top: 28px;
+    right: 40px;
+    transform: rotate(10deg);
+    border: 3px solid var(--rojo-sello);
+    color: var(--rojo-sello);
+    font-family: 'Special Elite', cursive;
+    font-size: 19px;
+    letter-spacing: 3px;
+    padding: 6px 14px;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .membrete {
+    text-align: center;
+    border-bottom: 2px solid var(--tinta-vieja);
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+
+  .membrete h3 {
+    font-family: 'Special Elite', cursive;
+    font-size: 20px;
+    color: var(--azul-policia);
+    letter-spacing: 3px;
+  }
+
+  .membrete p {
+    font-size: 11px;
+    color: var(--tinta-vieja);
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  .ficha-caso {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background: rgba(0,0,0,0.04);
+    border: 1px solid var(--papel-oscuro);
+    padding: 14px 18px;
+    margin-bottom: 26px;
+    font-size: 13px;
+  }
+
+  .ficha-caso span { color: var(--tinta-vieja); font-weight: 700; }
+
+  .seccion-titulo {
+    font-family: 'Special Elite', cursive;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--azul-policia);
+    border-bottom: 1px solid var(--papel-oscuro);
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+    margin-top: 26px;
+  }
+
+  .cuerpo-texto {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--tinta);
+    text-align: justify;
+  }
+
+  .cuerpo-texto p { margin-bottom: 14px; }
+
+  .nota-adhesiva {
+    background: var(--amarillo-nota);
+    padding: 14px 18px;
+    margin: 20px 0;
+    transform: rotate(-1.2deg);
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+    font-size: 13px;
+    line-height: 1.7;
+    max-width: 330px;
+    position: relative;
+  }
+
+  .nota-adhesiva::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 14px;
+    background: rgba(0,0,0,0.12);
+    border-radius: 1px;
+  }
+
+  .plano-escena {
+    background: var(--papel-oscuro);
+    border: 1px dashed var(--tinta-vieja);
+    padding: 22px;
+    margin: 20px 0;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--tinta);
+    overflow-x: auto;
+  }
+
+  /* SOSPECHOSOS */
+  .sospechosos-grid {
+    padding: 36px 44px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .ficha-sospechoso {
+    background: white;
+    border: 1px solid var(--papel-oscuro);
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    gap: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ficha-sospechoso::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .ficha-sospechoso.sospecha-alta::before { background: #c0392b; }
+  .ficha-sospechoso.sospecha-media::before { background: #e67e22; }
+  .ficha-sospechoso.sospecha-baja::before { background: #27ae60; }
+
+  .foto-sospechoso {
+    width: 130px;
+    min-height: 170px;
+    background: var(--gris-foto);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    border-right: 1px solid var(--papel-oscuro);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .foto-sospechoso img {
+    width: 90px;
+    height: 110px;
+    object-fit: cover;
+    object-position: top;
+    filter: grayscale(60%) sepia(20%);
+    border: 2px solid var(--papel-oscuro);
+    margin-bottom: 6px;
+  }
+
+  .numero-sospechoso {
+    font-family: 'Special Elite', cursive;
+    font-size: 10px;
+    color: var(--tinta-vieja);
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  .datos-sospechoso {
+    padding: 14px 18px;
+    flex: 1;
+  }
+
+  .nombre-sospechoso {
+    font-family: 'Special Elite', cursive;
+    font-size: 17px;
+    color: var(--azul-policia);
+    margin-bottom: 2px;
+  }
+
+  .rol-sospechoso {
+    font-size: 10px;
+    color: var(--tinta-vieja);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .datos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+    font-size: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--papel-oscuro);
+  }
+
+  .datos-grid .etiqueta { color: var(--tinta-vieja); font-weight: 700; font-size: 10px; letter-spacing: 1px; }
+
+  .declaracion-box {
+    background: #f9f7f2;
+    border-left: 3px solid var(--azul-policia);
+    padding: 10px 14px;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--tinta);
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .alerta-box {
+    background: #fff5f5;
+    border-left: 3px solid var(--acento);
+    padding: 8px 12px;
+    font-size: 11.5px;
+    color: #7a1a1a;
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  .nivel-sospecha {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-family: 'Special Elite', cursive;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  .nivel-alto { background: #fff0f0; color: #c0392b; border: 1px solid #c0392b; }
+  .nivel-medio { background: #fff7ed; color: #d35400; border: 1px solid #e67e22; }
+  .nivel-bajo { background: #f0fff4; color: #1a6b3a; border: 1px solid #27ae60; }
+
+  /* AUTOPSIA */
+  .forense-wrap { padding: 36px 44px; }
+
+  .reporte-forense {
+    border: 1px solid var(--papel-oscuro);
+    margin-bottom: 24px;
+    background: white;
+  }
+
+  .forense-header {
+    background: var(--verde-forense);
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .forense-icon {
+    width: 38px;
+    height: 38px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Special Elite', cursive;
+    font-size: 13px;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  .forense-titulo {
+    font-family: 'Special Elite', cursive;
+    color: #f0e8d5;
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+
+  .forense-subtitulo {
+    color: rgba(240,232,213,0.65);
+    font-size: 11px;
+    margin-top: 2px;
+    letter-spacing: 1px;
+  }
+
+  .forense-body { padding: 18px 22px; }
+
+  .hallazgos-lista {
+    list-style: none;
+    padding: 0;
+  }
+
+  .hallazgos-lista li {
+    padding: 7px 0 7px 22px;
+    border-bottom: 1px solid var(--papel-oscuro);
+    font-size: 13px;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .hallazgos-lista li::before {
+    content: '►';
+    position: absolute;
+    left: 0;
+    color: var(--verde-forense);
+    font-size: 9px;
+    top: 10px;
+  }
+
+  .hallazgos-lista li:last-child { border-bottom: none; }
+
+  .dato-clave {
+    background: #fff5f5;
+    border: 1px solid #e0a0a0;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #7a1a1a;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  /* COMUNICACIONES */
+  .comm-wrap { padding: 36px 44px; }
+
+  .registro-llamada {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--papel-oscuro);
+    font-size: 13px;
+  }
+
+  .llamada-hora {
+    font-family: 'Special Elite', cursive;
+    font-size: 14px;
+    color: var(--azul-policia);
+    min-width: 70px;
+    flex-shrink: 0;
+  }
+
+  .llamada-tipo {
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    margin-top: 3px;
+    display: inline-block;
+  }
+
+  .tipo-llamada { background: #e8f0ff; color: #1c2e4a; border: 1px solid #1c2e4a; }
+  .tipo-mensaje { background: #f0ffe8; color: #1a3a2a; border: 1px solid #1a3a2a; }
+  .tipo-sospechoso { background: #fff0f0; color: #8b1a1a; border: 1px solid #8b1a1a; }
+
+  .llamada-detalle { flex: 1; line-height: 1.6; color: var(--tinta); }
+  .llamada-duracion { color: var(--tinta-vieja); font-size: 12px; flex-shrink: 0; }
+
+  .mensaje-box {
+    background: white;
+    border: 1px solid var(--papel-oscuro);
+    padding: 18px 22px;
+    margin: 18px 0;
+  }
+
+  .mensaje-encabezado {
+    font-family: 'Special Elite', cursive;
+    font-size: 12px;
+    color: var(--tinta-vieja);
+    border-bottom: 1px solid var(--papel-oscuro);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    letter-spacing: 1.5px;
+  }
+
+  .burbuja-mensaje {
+    background: #f5f5f5;
+    border-left: 3px solid var(--azul-policia);
+    padding: 12px 16px;
+    font-size: 13.5px;
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--tinta);
+    margin-bottom: 8px;
+  }
+
+  /* EVIDENCIA */
+  .evidencia-wrap { padding: 36px 44px; }
+
+  .evidencia-item {
+    background: white;
+    border: 1px solid var(--papel-oscuro);
+    padding: 18px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .evidencia-icono {
+    width: 50px;
+    height: 50px;
+    background: var(--azul-policia);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    color: white;
+  }
+
+  .evidencia-numero {
+    font-family: 'Special Elite', cursive;
+    font-size: 10px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+    margin-top: 4px;
+    text-align: center;
+  }
+
+  .evidencia-contenido { flex: 1; }
+
+  .evidencia-titulo {
+    font-family: 'Special Elite', cursive;
+    font-size: 14px;
+    color: var(--azul-policia);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  .evidencia-descripcion {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--tinta);
+    margin-bottom: 8px;
+  }
+
+  .tag-trampa {
+    display: inline-block;
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #e0b94e;
+    font-size: 10px;
+    padding: 2px 8px;
+    letter-spacing: 1px;
+    font-family: 'Special Elite', cursive;
+  }
+
+  .tag-clave {
+    display: inline-block;
+    background: #fff0f0;
+    color: #8b1a1a;
+    border: 1px solid #c0392b;
+    font-size: 10px;
+    padding: 2px 8px;
+    letter-spacing: 1px;
+    font-family: 'Special Elite', cursive;
+  }
+
+  /* LÍNEA TEMPORAL */
+  .linea-wrap { padding: 36px 44px; }
+
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--papel-oscuro);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--azul-policia);
+    border: 2px solid var(--papel);
+  }
+
+  .timeline-item.critico::before { background: #c0392b; }
+  .timeline-item.sospechoso::before { background: #e67e22; }
+
+  .timeline-hora {
+    font-family: 'Special Elite', cursive;
+    font-size: 13px;
+    color: var(--azul-policia);
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  .timeline-item.critico .timeline-hora { color: #c0392b; }
+
+  .timeline-evento {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--tinta);
+    margin-top: 4px;
+  }
+
+  .timeline-nota {
+    background: rgba(255,255,255,0.6);
+    border-left: 2px solid var(--papel-oscuro);
+    padding: 6px 10px;
+    font-size: 12px;
+    color: var(--tinta-vieja);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* TRANSACCIONES */
+  .trans-wrap { padding: 36px 44px; }
+
+  table.trans-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-bottom: 20px;
+  }
+
+  table.trans-table th {
+    background: rgba(28,46,74,0.1);
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 1px solid #1c2e4a;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  table.trans-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  table.trans-table tr.destacado td { color: #c0392b; font-weight: 700; }
+
+  /* RESOLUCIÓN */
+  .resolucion-wrap { padding: 40px 50px; }
+
+  .pregunta-investigacion {
+    background: var(--azul-policia);
+    color: var(--papel);
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    border-radius: 2px;
+  }
+
+  .pregunta-investigacion h4 {
+    font-family: 'Special Elite', cursive;
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: var(--dorado);
+  }
+
+  .pregunta-investigacion p {
+    font-size: 13.5px;
+    line-height: 1.8;
+    opacity: 0.9;
+  }
+
+  /* ACUSACIÓN INTERACTIVA */
+  .acusacion-box {
+    background: #fff8e8;
+    border: 2px solid var(--dorado);
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+
+  .acusacion-box h4 {
+    font-family: 'Special Elite', cursive;
+    color: var(--tinta-vieja);
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .sospechosos-botones {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .btn-sospechoso {
+    background: white;
+    border: 2px solid var(--papel-oscuro);
+    padding: 10px 14px;
+    cursor: pointer;
+    font-family: 'Special Elite', cursive;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--azul-policia);
+    text-align: left;
+    transition: all 0.2s;
+    border-radius: 2px;
+  }
+
+  .btn-sospechoso:hover {
+    border-color: var(--azul-policia);
+    background: #f0f4ff;
+  }
+
+  .btn-sospechoso.seleccionado {
+    border-color: var(--dorado);
+    background: #fff8e8;
+    color: var(--tinta-vieja);
+  }
+
+  .btn-sospechoso.seleccionado::before {
+    content: '✓ ';
+    color: var(--dorado);
+  }
+
+  .btn-revelar-principal {
+    width: 100%;
+    background: var(--azul-policia);
+    color: var(--papel);
+    border: none;
+    padding: 16px;
+    font-family: 'Special Elite', cursive;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+
+  .btn-revelar-principal:hover { background: #2a4060; }
+  .btn-revelar-principal:disabled { background: #8a9db5; cursor: not-allowed; }
+
+  .resultado-acusacion {
+    display: none;
+    padding: 20px 24px;
+    margin-top: 16px;
+    text-align: center;
+    border-radius: 2px;
+  }
+
+  .resultado-correcto {
+    background: #f0fff4;
+    border: 2px solid #27ae60;
+  }
+
+  .resultado-incorrecto {
+    background: #fff5f5;
+    border: 2px solid #c0392b;
+  }
+
+  .resultado-acusacion .emoji { font-size: 36px; margin-bottom: 10px; }
+
+  .resultado-acusacion h3 {
+    font-family: 'Special Elite', cursive;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .resultado-correcto h3 { color: #1a6b3a; }
+  .resultado-incorrecto h3 { color: #8b1a1a; }
+
+  .resultado-acusacion p { font-size: 13px; line-height: 1.7; }
+
+  /* SOLUCIÓN */
+  .spoiler-box {
+    border: 2px solid var(--tinta-vieja);
+    overflow: hidden;
+  }
+
+  .spoiler-aviso {
+    background: var(--tinta-vieja);
+    color: var(--papel);
+    text-align: center;
+    padding: 12px;
+    font-family: 'Special Elite', cursive;
+    letter-spacing: 3px;
+    font-size: 12px;
+  }
+
+  .solucion-contenido {
+    display: none;
+    padding: 28px 34px;
+    background: white;
+  }
+
+  .solucion-contenido.visible { display: block; }
+
+  .solucion-titulo {
+    font-family: 'Special Elite', cursive;
+    font-size: 18px;
+    color: var(--azul-policia);
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--papel-oscuro);
+  }
+
+  .culpable {
+    display: block;
+    background: #c0392b;
+    color: white;
+    font-family: 'Special Elite', cursive;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-align: center;
+    padding: 14px;
+    margin-bottom: 22px;
+  }
+
+  .solucion-texto { font-size: 13.5px; line-height: 1.85; color: var(--tinta); }
+  .solucion-texto p { margin-bottom: 14px; }
+
+  .instrucciones-uso {
+    background: var(--amarillo-nota);
+    border: 1px dashed var(--tinta-vieja);
+    padding: 14px 18px;
+    font-size: 12.5px;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    font-family: 'Special Elite', cursive;
+    color: var(--tinta-vieja);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .carpeta-header { padding: 18px 20px; gap: 14px; }
+    .header-texto h2 { font-size: 20px; }
+    .informe-wrap, .sospechosos-grid, .forense-wrap, .comm-wrap,
+    .evidencia-wrap, .linea-wrap, .trans-wrap, .resolucion-wrap { padding: 24px 20px; }
+    .ficha-caso { grid-template-columns: 1fr; }
+    .datos-grid { grid-template-columns: 1fr; }
+    .foto-sospechoso { width: 100px; }
+    .sospechosos-botones { grid-template-columns: 1fr; }
+    .escudo { width: 48px; height: 48px; }
+    .clasificado-badge { display: none; }
+  }
